@@ -2,6 +2,7 @@ require_relative "./genre"
 require_relative "./source"
 require_relative "./author"
 require_relative "./label"
+require "date"
 
 class Item
   attr_reader :id, :genre, :source, :author, :label
@@ -9,7 +10,7 @@ class Item
 
   def initialize(publish_date, archived: false)
     @id = Random.rand(1..1000)
-    @publish_date = publish_date
+    @publish_date = Date.parse(publish_date)
     @archived = archived
   end
 
@@ -27,5 +28,13 @@ class Item
 
   def add_label(label)
     @label = Label.new(title, color)
+  end
+
+  def can_be_archived?
+    Date.today.prev_year(10) > @publish_date
+  end
+
+  def move_to_archive
+    @archived = true if can_be_archived?
   end
 end
