@@ -1,8 +1,8 @@
-require_relative "./genre"
-require_relative "./source"
-require_relative "./author"
-require_relative "./label"
-require "date"
+require_relative './genre'
+require_relative './source'
+require_relative './author'
+require_relative './label'
+require 'date'
 
 class Item
   attr_reader :id, :genre, :source, :author, :label
@@ -14,19 +14,19 @@ class Item
     @archived = archived
   end
 
-  def add_genre(genre)
+  def add_genre(_genre)
     @genre = Genre.new(name)
   end
 
-  def add_source(source)
+  def add_source(_source)
     @source = Source.new(name)
   end
 
-  def add_author(author)
+  def add_author(_author)
     @author = Author.new(first_name, last_name)
   end
 
-  def add_label(label)
+  def add_label(_label)
     @label = Label.new(title, color)
   end
 
