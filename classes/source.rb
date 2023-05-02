@@ -10,5 +10,6 @@ class Source
 
   def add_item(item)
     @items << item
+    item.add_source(self) unless item.source == (self)
   end
 end
