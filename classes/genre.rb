@@ -9,8 +9,8 @@ class Genre
   end
 
   def add_item(item)
-    if item.genre && item.genre.name
-      puts item.genre.name
+    if item.genre&.name
+      'The genre of the Item has already been set.'
     else
       @items << item
       item.add_genre(self) unless item.genre == (self)
