@@ -1,5 +1,13 @@
 require_relative './item'
 
+class Author < Item
+  # Make class properties accessible
+  attr_accessor :id, :first_name, :last_name, :items
+
+    # Class initialization
+  # Parameters:
+  # first_name: string
+  # last_name: string
   def initialize(first_name, last_name)
     @id = Random.rand(1..2000)
     @first_name = first_name
