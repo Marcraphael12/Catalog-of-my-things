@@ -9,7 +9,11 @@ class Genre
   end
 
   def add_item(item)
-    @items << item
-    item.add_genre(self) unless item.genre == (self)
+    if item.genre && item.genre.name
+      puts item.genre.name
+    else
+      @items << item
+      item.add_genre(self) unless item.genre == (self)
+    end
   end
 end

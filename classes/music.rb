@@ -5,11 +5,11 @@ class MusicAlbum < Item
   attr_reader :id, :archived
 
   def initialize(on_spotify, publish_date, _archived)
-    super(publish_date, archived: true)
+    super(publish_date, archived: false)
     @on_spotify = on_spotify
   end
 
   def can_be_archived?
-    Date.today.prev_year(10) > @publish_date && _on_spotify
+    Date.today.prev_year(10) > @publish_date && @on_spotify
   end
 end
