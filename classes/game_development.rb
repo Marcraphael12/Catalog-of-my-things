@@ -7,6 +7,7 @@ class Game < Item
   # Parameters:
   # multiplayer: boolean
   # last_played_at: date
+  # publish_date: boolean
   def initialize(multiplayer, last_played_at, publish_date)
     # Calls the parent class constructor
     super publish_date
@@ -15,6 +16,8 @@ class Game < Item
   end
 
   # We check if the game can be archive or not
+  # should return true if parent's method returns true AND if last_played_at is older than 2 years
+  # otherwise, it should return false
   def can_be_archived?
     super && (@last_played.year < Date.today.year - 2)
   end
