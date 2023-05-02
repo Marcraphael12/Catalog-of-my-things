@@ -38,7 +38,12 @@ describe MusicAlbum do
     end
 
     it 'Should list all music albums' do
-      
+      @app.music_albums = [@music_album_one]
+      expect do
+        @app.list_music_album
+      end.to output
+      "_______LIST OF MUSIC ALBUM_______\n\n0- Music id: #{@music_album_one.id} - is published on 2028-10-07\n"
+        .to_stdout
     end
   end
 end

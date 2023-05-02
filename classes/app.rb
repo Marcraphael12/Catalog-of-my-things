@@ -1,7 +1,7 @@
 require_relative './music'
 
 class Startup
-  attr_reader :music_albums
+  attr_accessor :music_albums
 
   def initialize
     @music_albums = []
@@ -34,7 +34,7 @@ class Startup
     (1..7).include?(choice) && methods[choice - 1].call
   end
 
-  # Our dashboade methods
+  # Our dashboard methods
   # Defined with default options
   # TODO: To be implemented later
   def booklist
