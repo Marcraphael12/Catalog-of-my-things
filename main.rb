@@ -1,5 +1,10 @@
 require_relative './classes/app'
 
 def main
-  App.new
+  start = Startup.new
+  loop do
+    start.start
+  end
 end
+
+main
