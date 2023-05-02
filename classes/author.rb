@@ -4,7 +4,7 @@ class Author < Item
   # Make class properties accessible
   attr_accessor :id, :first_name, :last_name, :items
 
-    # Class initialization
+  # Class initialization
   # Parameters:
   # first_name: string
   # last_name: string
