@@ -8,14 +8,14 @@ class Startup
   # the user options
   def options_list
     puts ''
-    puts 'Please choose an option according to the numbers on the dashboard:
+    puts "Please choose an option according to the numbers on the dashboard:
     1# List all books
     2# List all music albums
     3# List of games
     4# Add a book
     5# Add a music album
     6# Add a game
-    7# Exit'
+    7# Exit"
 
     choice = gets.chomp
     selection(choice.to_i)
@@ -24,7 +24,7 @@ class Startup
   # We save our selection into an array
   def selection(choice)
     methods = [
-      method(:booklist), method(:musiclist), method(:gamelist),
+      method(:booklist), method(:list_music_album), method(:gamelist),
       method(:create_book), method(:add_music_album), method(:create_game), method(:quit_app)
     ]
 
@@ -39,9 +39,12 @@ class Startup
     puts 'book list in library'
   end
 
-  # TODO: To be implemented later
-  def musiclist
-    puts 'Music list in library'
+  def list_music_album
+    puts '_______LIST OF MUSIC ALBUM_______'
+    puts ''
+    @music_albums.each_with_index do |music_album, index|
+      puts "#{index}- Music id: #{music_album.id} - is published on #{music_album.publish_date}"
+    end
   end
 
   # TODO: To be implemented later
