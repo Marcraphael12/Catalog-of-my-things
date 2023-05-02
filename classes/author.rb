@@ -17,8 +17,11 @@ class Author < Item
     @items = []
   end
 
+  # Add_item method:
+  # should take an instance of the Item class as an input.
+  # should add the input item to the collection of items.
   def add_item(item)
     @items << item
-    item.add_author(self) unless item.author == (self)
+    item.author == (self)
   end
 end
