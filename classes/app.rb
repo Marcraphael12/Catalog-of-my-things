@@ -1,6 +1,8 @@
 require_relative './music'
 
 class Startup
+  attr_reader :music_albums
+
   def initialize
     @music_albums = []
   end
