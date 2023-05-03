@@ -72,4 +72,22 @@ class GameActions
       end
     end
   end
+
+  # List_authors method:
+  # checks if @authors is empty
+  # if not, then print out the author list
+
+  def list_authors
+    if @authors.empty?
+      puts 'no authors available!'
+    else
+      @authors.each do |author|
+        puts "
+          Author's id: #{author.id}
+          Author's name: #{author.first_name}
+          Author's lastname: #{author.last_name}
+        "
+      end
+    end
+  end
 end
