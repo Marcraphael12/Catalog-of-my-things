@@ -1,5 +1,6 @@
-require '../game_development'
-require '../author'
+require_relative '../game_development'
+require_relative '../author'
+require 'json'
 
 class GameActions
   # Make class properties accessible
@@ -24,7 +25,7 @@ class GameActions
                   last_played_at: game.last_played_at,
                   publish_date: game.publish_date })
     end
-    File.write('../data/games.json', JSON.generate(data))
+    File.write('./classes/game_sub_classes/data/games.json', JSON.generate(data)).to_s
   end
 
   def save_authors
@@ -34,7 +35,7 @@ class GameActions
                   first_name: author.first_name,
                   last_name: author.last_name })
     end
-    File.write('../data/authors.json', JSON.generate(data))
+    File.write('./classes/game_sub_classes/data/authors.json', JSON.generate(data)).to_s
   end
 
   # Load_games and Load_authors methods:
@@ -43,7 +44,7 @@ class GameActions
   # then return that array containing the games/authors
   def load_games
     data = []
-    file = '../data/games.json'
+    file = './classes/game_sub_classes/data/games.json'
 
     # if the file exists, then read the file and parse the json data
     # otherwise create it
@@ -52,14 +53,14 @@ class GameActions
         data.push(Game.new(game['multiplayer'], game['last_played_at'], game['publish_date']))
       end
     else
-      File.write(file, [])
+      File.write(file, JSON.generate(data))
     end
     data
   end
 
   def load_authors
     data = []
-    file = '../data/authors.json'
+    file = './classes/game_sub_classes/data/authors.json'
 
     # if the file exists, then read the file and parse the json data
     # otherwise create it
@@ -68,7 +69,7 @@ class GameActions
         data.push(Author.new(author['first_name'], author['last_name']))
       end
     else
-      File.write(file, [])
+      File.write(file, JSON.generate(data))
     end
     data
   end
@@ -85,7 +86,7 @@ class GameActions
     puts 'Is the game multiplayer or not? [Y/N]: '
     multiplayer = gets.chomp.downcase
 
-    puts 'Please provide the last date you played it? (yyyy-mm-dd): '
+    puts 'Please provide the last date you played it? (yyyy-mm-dd):'
     last_played_at = gets.chomp
 
     game = Game.new(multiplayer, last_played_at, publish_date)
@@ -111,12 +112,12 @@ class GameActions
       puts 'No games available yet!'
     else
       @games.each do |game|
-        puts `
+        puts "
           Game id: #{game.id}
           Publish date : #{game.publish_date}
           Multiplayer: #{game.multiplayer == 'y' ? 'Yes' : 'No'}
           Last played date : #{game.last_played_at}
-          `
+          "
       end
     end
   end
