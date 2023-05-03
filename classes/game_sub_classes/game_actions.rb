@@ -53,4 +53,23 @@ class GameActions
     @authors.push(game.author)
     puts "🥳 \n You have a new game added to your catalog🤗."
   end
+
+  # List_games method:
+  # checks if @games is empty
+  # if not, the print out the game list
+
+  def list_games
+    if @games.empty?
+      puts 'No games available yet!'
+    else
+      @games.each do |game|
+        puts `
+          Game id: #{game.id}
+          Publish date : #{game.publish_date}
+          Multiplayer: #{game.multiplayer == 'y' ? 'Yes' : 'No'}
+          Last played date : #{game.last_played_at}
+          `
+      end
+    end
+  end
 end
