@@ -27,6 +27,16 @@ class GameActions
     File.write('../data/games.json', JSON.generate(data))
   end
 
+  def save_authors
+    data = []
+    @authors.each do |author|
+      data.push({ id: author.id,
+        first_name: author.first_name,
+        last_name: author.last_name })
+    end
+    File.write('../data/authors.json', JSON.generate(data))
+  end
+
   # Load_games and Load_authors methods:
   # should load the games and authors from the json file
   # and save them into array
