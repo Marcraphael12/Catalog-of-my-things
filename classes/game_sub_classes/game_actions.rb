@@ -12,4 +12,16 @@ class GameActions
     @games = load_games
     @authors = load_authors
   end
+
+  # Load_games and Load_authors methods:
+  # should load the games and authors from the json file
+  # and save them into array
+  # then return that array containing the games/authors
+  def load_games
+    data = []
+  end
+
+  def load_authors
+    data = []
+  end
 end
