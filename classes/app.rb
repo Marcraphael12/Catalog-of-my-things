@@ -2,7 +2,7 @@ require_relative './game_sub_classes/game_actios'
 
 class Startup
   # class initialization:
-  # @game_actions: Object
+  # @game_actions: Object created from CameActions class
   def initialize
     @game_actions = GameActions.new
   end
@@ -60,12 +60,15 @@ class Startup
     puts 'create music'
   end
 
-  # TODO: To be implemented later
+  # call create_game method from GameActions
   def create_game
-    puts 'create game'
+    @game_actions.add_game
   end
 
-  def quit_app
+  # Saves file befor leaving the app
+  def quite_app
+    @game_actions.save_games
+    @game_actions.save_authors
     puts 'Thanks for using our app'
     exit
   end
