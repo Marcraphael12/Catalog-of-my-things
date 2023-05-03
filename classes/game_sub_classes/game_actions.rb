@@ -39,5 +39,8 @@ class GameActions
     
     puts 'Please provide the last date you played it? (yyyy-mm-dd): '
     last_played_at = gets.chomp
+
+    game = Game.new(multiplayer, last_played_at, publish_date)
+    @games.push(game)
   end
 end
