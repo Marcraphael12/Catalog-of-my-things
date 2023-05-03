@@ -33,7 +33,7 @@ class Startup
     ]
 
     # according to the number entered we call the defined method
-    (1..7).include?(choice) && methods[choice - 1].call
+    (1..10).include?(choice) && methods[choice - 1].call
   end
 
   # Our dashboade methods
@@ -46,11 +46,6 @@ class Startup
   # TODO: To be implemented later
   def musiclist
     puts 'Music list in library'
-  end
-
-  # TODO: To be implemented later
-  def gamelist
-    puts 'Game list in library'
   end
 
   # TODO: To be implemented later
@@ -68,6 +63,11 @@ class Startup
     @game_actions.add_game
   end
 
+  # list all games added
+  def gamelist
+    @game_actions.list_games
+  end
+  
   # list all authors added
   def list_authors
     @game_actions.list_authors
