@@ -68,6 +68,11 @@ class Startup
     @game_actions.add_game
   end
 
+  # list all authors added
+  def list_authors
+    @game_actions.list_authors
+  end
+
   # Saves file befor leaving the app
   def quite_app
     @game_actions.save_games
