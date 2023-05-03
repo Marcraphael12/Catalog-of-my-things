@@ -2,7 +2,7 @@ require_relative './item'
 
 class Author < Item
   # Make class properties accessible
-  attr_reader :id 
+  attr_reader :id
   attr_accessor :first_name, :last_name, :items
 
   # Class initialization
