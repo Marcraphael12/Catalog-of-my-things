@@ -1,4 +1,5 @@
 require_relative './item'
+require 'json'
 
 class MusicAlbum < Item
   attr_accessor :on_spotify, :publish_date
@@ -10,6 +11,6 @@ class MusicAlbum < Item
   end
 
   def can_be_archived?
-    Date.today.prev_year(10) > @publish_date && @on_spotify
+    super && @on_spotify
   end
 end
