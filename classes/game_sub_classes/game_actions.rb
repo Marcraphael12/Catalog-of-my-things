@@ -24,4 +24,12 @@ class GameActions
   def load_authors
     data = []
   end
+
+  # add_game method:
+  # Takes as inputs: the publish_date, if it's multiplayer, and last_played options
+  # creates a new game and push it to @games
+  # creates a new author and add it to the item
+
+  def add_game
+  end
 end
