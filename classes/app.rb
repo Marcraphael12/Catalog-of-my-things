@@ -1,4 +1,4 @@
-require_relative './game_sub_classes/game_actios'
+require_relative './game_sub_classes/game_actions'
 
 class Startup
   # class initialization:
@@ -9,7 +9,7 @@ class Startup
 
   # the user options
   def options_list
-    puts `Please choose an option according to the numbers on the dashboard:
+    puts "Please choose an option according to the numbers on the dashboard:
     1# List all books
     2# List all music albums
     3# List of games
@@ -19,7 +19,7 @@ class Startup
     7# Add a book
     8# Add a music album
     9# Add a game
-    10# Exit`
+    10# Exit"
 
     choice = gets.chomp
     selection(choice.to_i)
@@ -43,8 +43,23 @@ class Startup
     puts 'book list in library'
   end
 
+  # To be implemented
+  def list_labels
+    puts 'label list'
+  end
+
+  # To be implemented
+  def list_genres
+    puts 'label list'
+  end
+
   # TODO: To be implemented later
-  def musiclist
+  def list_music_album
+    puts 'Music list in library'
+  end
+
+  # TODO: To be implemented later
+  def add_music_album
     puts 'Music list in library'
   end
 
@@ -67,14 +82,14 @@ class Startup
   def gamelist
     @game_actions.list_games
   end
-  
+
   # list all authors added
   def list_authors
     @game_actions.list_authors
   end
 
   # Saves file befor leaving the app
-  def quite_app
+  def quit_app
     @game_actions.save_games
     @game_actions.save_authors
     puts 'Thanks for using our app'
