@@ -3,6 +3,7 @@ require_relative './source'
 require_relative './author'
 require_relative './label'
 require 'date'
+require 'json'
 
 class Item
   attr_reader :id, :genre, :source, :author, :label
@@ -21,12 +22,12 @@ class Item
 
   def add_source(source)
     @source = source
-    _source.items << self unless source.items.include?(self)
+    source.items << self unless source.items.include?(self)
   end
 
   def add_author(author)
     @author = author
-    _author.items << self unless author.items.include?(self)
+    author.items << self unless author.items.include?(self)
   end
 
   def add_label(label)
@@ -40,5 +41,19 @@ class Item
 
   def move_to_archive
     @archived = true if can_be_archived?
+  end
+
+  # Convert object to json
+  def to_json(*_args)
+    JSON.dump({
+                publish_date: @publish_date,
+                archived: @archived
+              })
+  end
+
+  # Convert json string to object
+  def self.from_json(string)
+    data = JSON.parse(string)
+    new(data['publish_date'], data['archived'])
   end
 end
