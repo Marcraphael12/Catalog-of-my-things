@@ -1,12 +1,12 @@
-require './game_development'
-require './author'
+require '../game_development'
+require '../author'
 
 class GameActions
   # Make class properties accessible
   attr_accessor :games, :authors
 
   # Class initialization
-  # games: assigned to the method load_games(from the json file) 
+  # games: assigned to the method load_games(from the json file)
   # authors: assigned to the method load_authors(from the json file)
   def initialize
     @games = load_games
@@ -31,8 +31,8 @@ class GameActions
     data = []
     @authors.each do |author|
       data.push({ id: author.id,
-        first_name: author.first_name,
-        last_name: author.last_name })
+                  first_name: author.first_name,
+                  last_name: author.last_name })
     end
     File.write('../data/authors.json', JSON.generate(data))
   end
@@ -81,10 +81,10 @@ class GameActions
   def add_game
     puts 'What\'s the publish date of the game? (yyyy-mm-dd): '
     publish_date = gets.chomp
-    
+
     puts 'Is the game multiplayer or not? [Y/N]: '
     multiplayer = gets.chomp.downcase
-    
+
     puts 'Please provide the last date you played it? (yyyy-mm-dd): '
     last_played_at = gets.chomp
 
