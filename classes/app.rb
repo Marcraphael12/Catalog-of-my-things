@@ -1,4 +1,5 @@
 require_relative './music'
+require_relative './io'
 
 class Startup
   attr_accessor :music_albums, :genres
@@ -104,6 +105,7 @@ class Startup
       @genres << new_genre
     end
     @music_albums << new_music_album
+    write_file(@music_albums, './data/music_album.json')
     puts 'A music album is created successfully'
   end
 
