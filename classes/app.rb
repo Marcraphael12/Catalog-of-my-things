@@ -5,6 +5,13 @@ class Startup
 
   def initialize
     @music_albums = []
+    @genres = []
+  end
+
+  # Title of each option when executed
+  def title(title)
+    puts "_____#{title.upcase}_____"
+    puts ''
   end
 
   # the user options
@@ -45,8 +52,7 @@ class Startup
   end
 
   def list_music_album
-    puts '_____LIST OF MUSIC ALBUM_____'
-    puts ''
+    title('list of music album')
     @music_albums.each_with_index do |music_album, index|
       puts "#{index}- Music id: #{music_album.id} - is published on #{music_album.publish_date}"
     end
@@ -58,7 +64,10 @@ class Startup
   end
 
   # List all the existing genres
-  def list_genres; end
+  def list_genres
+    title('list of genre')
+    @genres.each_with_index { |genre, index| puts "#{index} - #{genre.name}" }
+  end
 
   # TODO: To be implemented
   def list_labels
@@ -76,8 +85,7 @@ class Startup
   end
 
   def add_music_album
-    puts '_____ ADD A NEW MUSIC ALBUM _____'
-    puts ''
+    title('add a music album')
     print 'Is it on Spotify? (y/n) '
     on_spotify_input = gets.chomp.downcase
     on_spotify = %w[y yes].include?(on_spotify_input)
@@ -89,7 +97,12 @@ class Startup
     print 'What is the genre of the music album? '
     genre = gets.chomp.capitalize
     new_music_album = MusicAlbum.new(on_spotify, publish_date, archived)
-    new_music_album.add_genre(Genre.new(genre)) unless genre.empty?
+    # Set genre only when the user provided a genre
+    unless genre.empty?
+      new_genre = Genre.new(genre)
+      new_music_album.add_genre(new_genre)
+      @genres << new_genre
+    end
     @music_albums << new_music_album
     puts 'A music album is created successfully'
   end
