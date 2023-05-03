@@ -42,5 +42,15 @@ class GameActions
 
     game = Game.new(multiplayer, last_played_at, publish_date)
     @games.push(game)
+
+    puts 'Author first name: '
+    first_name = gets.chomp
+    puts 'Author last name: '
+    last_name = gets.chomp
+    author = Author.new(first_name, last_name)
+
+    author.add_item(game)
+    @authors.push(game.author)
+    puts "🥳 \n You have a new game added to your catalog🤗."
   end
 end
