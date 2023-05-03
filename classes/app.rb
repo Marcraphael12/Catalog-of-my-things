@@ -1,3 +1,5 @@
+require_relative './game_sub_classes/game_actios'
+
 class Startup
   # the user options
   def options_list
