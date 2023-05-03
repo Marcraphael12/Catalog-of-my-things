@@ -14,10 +14,13 @@ class Startup
     1# List all books
     2# List all music albums
     3# List of games
-    4# Add a book
-    5# Add a music album
-    6# Add a game
-    7# Exit"
+    4# List all genres (e.g 'Comedy', 'Thriller')
+    5# List all labels (e.g. 'Gift', 'New')
+    6# List all authors (e.g. 'Stephen King')
+    7# Add a book
+    8# Add a music album
+    9# Add a game
+    10# Exit"
 
     choice = gets.chomp
     selection(choice.to_i)
@@ -26,12 +29,12 @@ class Startup
   # We save our selection into an array
   def selection(choice)
     methods = [
-      method(:booklist), method(:list_music_album), method(:gamelist),
-      method(:create_book), method(:add_music_album), method(:create_game), method(:quit_app)
+      method(:booklist), method(:list_music_album), method(:gamelist), method(:list_genres), method(:list_labels),
+      method(:list_authors), method(:create_book), method(:add_music_album), method(:create_game), method(:quit_app)
     ]
 
     # according to the number entered we call the defined method
-    (1..7).include?(choice) && methods[choice - 1].call
+    (1..10).include?(choice) && methods[choice - 1].call
   end
 
   # Our dashboard methods
@@ -42,7 +45,7 @@ class Startup
   end
 
   def list_music_album
-    puts '_______LIST OF MUSIC ALBUM_______'
+    puts '_____LIST OF MUSIC ALBUM_____'
     puts ''
     @music_albums.each_with_index do |music_album, index|
       puts "#{index}- Music id: #{music_album.id} - is published on #{music_album.publish_date}"
@@ -52,6 +55,19 @@ class Startup
   # TODO: To be implemented later
   def gamelist
     puts 'Game list in library'
+  end
+
+  # List all the existing genres
+  def list_genres; end
+
+  # TODO: To be implemented
+  def list_labels
+    puts 'labels'
+  end
+
+  # TODO: To be implemented
+  def list_authors
+    puts 'authors'
   end
 
   # TODO: To be implemented later
@@ -70,7 +86,11 @@ class Startup
     print 'Is it archived? (y/n) '
     archived_input = gets.chomp.downcase
     archived = %w[y yes].include?(archived_input)
-    @music_albums << MusicAlbum.new(on_spotify, publish_date, archived)
+    print 'What is the genre of the music album? '
+    genre = gets.chomp.capitalize
+    new_music_album = MusicAlbum.new(on_spotify, publish_date, archived)
+    new_music_album.add_genre(Genre.new(genre)) unless genre.empty?
+    @music_albums << new_music_album
     puts 'A music album is created successfully'
   end
 

@@ -33,17 +33,16 @@ describe MusicAlbum do
       # stub the puts method to prevent it from printing output on the console during testing
       allow(@app).to receive(:puts)
       # stub the method gets to simulate the user input
-      allow(@app).to receive(:gets).and_return('y', '2/2/1999', 'n')
+      allow(@app).to receive(:gets).and_return('y', '2/2/1999', 'n', 'pop')
       expect { @app.add_music_album }.to change { @app.music_albums.size }.by(1)
+      expect(@app.music_albums[0].genre.name).to eq 'Pop'
     end
 
     it 'Should list all music albums' do
       @app.music_albums = [@music_album_one]
       expect do
         @app.list_music_album
-      end.to output
-      "_______LIST OF MUSIC ALBUM_______\n\n0- Music id: #{@music_album_one.id} - is published on 2028-10-07\n"
-        .to_stdout
+      end.to output("_____LIST OF MUSIC ALBUM_____\n\n0- Music id: #{@music_album_one.id} - is published on 2028-10-07\n").to_stdout
     end
   end
 end
