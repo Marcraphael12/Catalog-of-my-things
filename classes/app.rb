@@ -1,6 +1,12 @@
 require_relative './game_sub_classes/game_actios'
 
 class Startup
+  # class initialization:
+  # @game_actions: Object
+  def initialize
+    @game_actions = GameActions.new
+  end
+
   # the user options
   def options_list
     puts 'Please choose an option according to the numbers on the dashboard:
