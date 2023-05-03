@@ -31,5 +31,13 @@ class GameActions
   # creates a new author and add it to the item
 
   def add_game
+    puts 'What\'s the publish date of the game? (yyyy-mm-dd): '
+    publish_date = gets.chomp
+    
+    puts 'Is the game multiplayer or not? [Y/N]: '
+    multiplayer = gets.chomp.downcase
+    
+    puts 'Please provide the last date you played it? (yyyy-mm-dd): '
+    last_played_at = gets.chomp
   end
 end

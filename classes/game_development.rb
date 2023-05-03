@@ -1,6 +1,7 @@
 require_relative './item'
 class Game < Item
   # Makes our class properties accessible
+  attr_reader :publish_date
   attr_accessor :multiplayer, :last_played_at
 
   # Class initialization
@@ -13,6 +14,7 @@ class Game < Item
     super publish_date
     @multiplayer = multiplayer
     @last_played_at = last_played_at
+    @publish_date = publish_date
   end
 
   # We check if the game can be archive or not
