@@ -1,4 +1,5 @@
 require_relative '../classes/music'
+require_relative '../classes/app'
 
 describe Genre do
   before(:context) do
@@ -7,6 +8,7 @@ describe Genre do
     @music_album_three = MusicAlbum.new(true, '13/12/2010', false)
     @indie = Genre.new('indie')
     @rock = Genre.new('rock')
+    @app = Startup.new
   end
   context 'Testing methods for updating genre' do
     it 'Should add genre to the music album and update the number of items to the Genre class' do
@@ -23,6 +25,15 @@ describe Genre do
       expect(@music_album_one.genre).to eq @indie
       expect(@music_album_two.genre).to eq @rock
       expect(@rock.items).to include @music_album_two && @music_album_three
+    end
+
+    it 'Should list all the genres' do
+      @app.genres = [@indie, @rock]
+      expect {
+        @app.list_genres
+      }.to output {
+        "_____LIST OF GENRE_____\n\n0 - Indie\n1 - Rock\n"
+      }.to_stdout
     end
   end
 end

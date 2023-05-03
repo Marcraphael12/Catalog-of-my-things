@@ -1,7 +1,7 @@
 require_relative './music'
 
 class Startup
-  attr_accessor :music_albums
+  attr_accessor :music_albums, :genres
 
   def initialize
     @music_albums = []
