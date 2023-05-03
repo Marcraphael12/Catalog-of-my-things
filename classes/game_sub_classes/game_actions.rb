@@ -19,6 +19,18 @@ class GameActions
   # then return that array containing the games/authors
   def load_games
     data = []
+    file = '../data/games.json'
+
+    # if the file exists, then read the file and parse the json data
+    # otherwise create it
+    if File.exist?(file)
+      JSON.parse(File.read(file)).each do |game|
+        data.push(Game.new(game['multiplayer'], game['last_played_at'], game['publish_date']))
+      end
+    else
+      File.write(file, [])
+    end
+    data
   end
 
   def load_authors
