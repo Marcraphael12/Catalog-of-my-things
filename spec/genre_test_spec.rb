@@ -29,9 +29,9 @@ describe Genre do
 
     it 'Should list all the genres' do
       @app.genres = [@indie, @rock]
-      expect {
+      expect do
         @app.list_genres
-      }.to output {
+      end.to output {
         "_____LIST OF GENRE_____\n\n0 - Indie\n1 - Rock\n"
       }.to_stdout
     end

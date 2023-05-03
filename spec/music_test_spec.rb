@@ -42,7 +42,9 @@ describe MusicAlbum do
       @app.music_albums = [@music_album_one]
       expect do
         @app.list_music_album
-      end.to output("_____LIST OF MUSIC ALBUM_____\n\n0- Music id: #{@music_album_one.id} - is published on 2028-10-07\n").to_stdout
+      end.to output {
+        "_____LIST OF MUSIC ALBUM_____\n\n0- Music id: #{@music_album_one.id} - is published on 2028-10-07\n"
+      }.to_stdout
     end
   end
 end
