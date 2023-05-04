@@ -8,9 +8,10 @@ class Item
   attr_reader :id, :genre, :source, :author, :label
   attr_accessor :publish_date, :archived
 
-  def initialize(publish_date, archived: false)
+  # convert publish_date to a date format
+  def initialize(publish_date = Time.new.strftime('%Y-%m-%d'), archived: false)
     @id = Random.rand(1..1000)
-    @publish_date = Date.parse(publish_date)
+    @publish_date = publish_date
     @archived = archived
   end
 
@@ -34,8 +35,9 @@ class Item
     label.items << self unless label.items.include?(self)
   end
 
+  # convert publish_date to integer before comparing
   def can_be_archived?
-    Date.today.prev_year(10) > @publish_date
+    @publish_date.to_i < Date.today.year - 10
   end
 
   def move_to_archive
