@@ -5,7 +5,7 @@ describe Game do
   # Settings:
   # we first create a new game object
   before :each do
-    @game = Game.new true, '2016-01-01', '2001-01-01'
+    @game = Game.new true, '2001-01-01', '2016-01-01'
   end
 
   # Test 1:
