@@ -9,7 +9,7 @@ class Item
   attr_reader :id, :genre, :source, :author, :label
   attr_accessor :publish_date, :archived
 
-  def initialize(publish_date, archived: false)
+  def initialize(publish_date, archived= false)
     @id = Random.rand(1..1000)
     @publish_date = Date.parse(publish_date)
     @archived = archived
@@ -46,6 +46,7 @@ class Item
   # Convert object to json
   def to_json(*_args)
     JSON.dump({
+                id: @id,
                 publish_date: @publish_date,
                 archived: @archived
               })
@@ -54,6 +55,8 @@ class Item
   # Convert json string to object
   def self.from_json(string)
     data = JSON.parse(string)
-    new(data['publish_date'], data['archived'])
+    obj = self.new(data['publish_date'], data['archived'])
+    obj.instance_variable_set(:@id, data['id'])
+    obj
   end
 end

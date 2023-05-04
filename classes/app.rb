@@ -5,7 +5,7 @@ class Startup
   attr_accessor :music_albums, :genres
 
   def initialize
-    @music_albums = []
+    @music_albums = read_file('./data/music_album.json')
     @genres = []
   end
 
@@ -52,10 +52,17 @@ class Startup
     puts 'book list in library'
   end
 
+  # List all the existing music albums
   def list_music_album
+    @music_albums = read_file('./data/music_album.json')
     title('list of music album')
-    @music_albums.each_with_index do |music_album, index|
-      puts "#{index}- Music id: #{music_album.id} - is published on #{music_album.publish_date}"
+    if @music_albums.empty?
+      puts 'No music album in the library'
+      return
+    else
+      @music_albums.each_with_index do |music_album, index|
+        puts "#{index}- Music id: #{music_album.id} - is published on #{music_album.publish_date}"
+      end
     end
   end
 
