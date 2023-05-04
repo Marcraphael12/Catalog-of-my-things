@@ -35,7 +35,7 @@ class Item
     label.items << self unless label.items.include?(self)
   end
 
-  # convert publish_date to integer before comparing
+
   def can_be_archived?
     @publish_date.to_i < Date.today.year - 10
   end
