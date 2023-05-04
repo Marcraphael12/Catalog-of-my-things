@@ -22,7 +22,7 @@ describe Game do
   # correctly. It expects the `multiplayer` attribute of the `@game` object to be equal to `true`.
   describe 'Multiplayer input testing' do
     it 'returns the correct value for Multiplayer' do
-      expect(@game.multiplayer).to eql (true)
+      expect(@game.multiplayer).to eql(true)
     end
   end
 
@@ -51,7 +51,7 @@ describe Game do
   # class. It expects the method to return `false` when called on the `@game` object.
   describe 'Test for can_be_archived? method' do
     it 'Checks if the game can be archived or not ' do
-      expect(@game.can_be_archived?).to eql (false)
+      expect(@game.can_be_archived?).to eql(false)
     end
   end
 end
