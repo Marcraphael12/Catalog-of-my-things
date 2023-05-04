@@ -2,8 +2,7 @@ require_relative '../classes/game_development'
 require_relative '../classes/item'
 
 # Settings:
-# we first create new authors obects
+# we first create a new game object
 before :each do
-	@author1 = Author.new 'Marc', 'Raphael'
-	@author2 = Author.new 'Clarielle', 'Larissa'
+  @game = Game.new true, '2010-10-10', '202"-11-11'
 end
