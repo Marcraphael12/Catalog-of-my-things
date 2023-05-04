@@ -1,11 +1,12 @@
 require_relative './music'
+require_relative './genre'
 require_relative './io'
 
 class Startup
   attr_accessor :music_albums, :genres
 
   def initialize
-    @music_albums = read_file('./data/music_album.json')
+    @music_albums = []
     @genres = []
   end
 
@@ -13,6 +14,33 @@ class Startup
   def title(title)
     puts "_____#{title.upcase}_____"
     puts ''
+  end
+
+  # Check whether the genre already exists in the file
+  # @param Genre[]
+  # @param String
+  # @return Boolean
+  def exist_genre?(genres, name)
+    exist = false
+    genres.each do |genre|
+      exist = true if genre.name == name
+      break
+    end
+    exist
+  end
+
+  # Update number of items in a particular Genre
+  # @param Genre[]
+  # @param String
+  # @param MusicAlbum
+  # @return nil
+  def update_items(genres, name, new_music_album)
+    genres.each do |genre_item|
+      if genre_item.name == name
+        genre_item.add_item(new_music_album)
+        break
+      end
+    end
   end
 
   # the user options
@@ -58,7 +86,7 @@ class Startup
     title('list of music album')
     if @music_albums.empty?
       puts 'No music album in the library'
-      return
+      nil
     else
       @music_albums.each_with_index do |music_album, index|
         puts "#{index}- Music id: #{music_album.id} - is published on #{music_album.publish_date}"
@@ -73,6 +101,7 @@ class Startup
 
   # List all the existing genres
   def list_genres
+    @genres = read_file('./data/genres.json')
     title('list of genre')
     @genres.each_with_index { |genre, index| puts "#{index} - #{genre.name}" }
   end
@@ -107,9 +136,16 @@ class Startup
     new_music_album = MusicAlbum.new(on_spotify, publish_date, archived)
     # Set genre only when the user provided a genre
     unless genre.empty?
-      new_genre = Genre.new(genre)
-      new_music_album.add_genre(new_genre)
-      @genres << new_genre
+      if exist_genre?(@genres, genre)
+        # add items to that genre
+        update_items(@genres, genre, new_music_album)
+      else
+        # create a new genre
+        new_genre = Genre.new(genre)
+        new_music_album.add_genre(new_genre)
+        @genres << new_genre
+      end
+      write_file(@genres, './data/genres.json')
     end
     @music_albums << new_music_album
     write_file(@music_albums, './data/music_album.json')
