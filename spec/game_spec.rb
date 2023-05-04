@@ -13,7 +13,7 @@ describe Game do
   # `@game` object is an instance of the `Game` class.
   describe 'Create a new game object' do
     it 'Takes 3 arguments and return the game object' do
-      expect(@game).to be_an_instance_of (Game)
+      expect(@game).to be_an_instance_of(Game)
     end
   end
 
