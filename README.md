@@ -1,11 +1,8 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
-  <img src="murple_logo.png" alt="logo" width="140"  height="auto" />
-  <br/>
 
-  <h3><b>Microverse README Template</b></h3>
+  <h1><b>🤖 CatalogueMe 🤖</b></h1>
 
 </div>
 
@@ -16,47 +13,41 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
   - [Install](#install)
   - [Usage](#usage)
   - [Run tests](#run-tests)
-  - [Deployment](#deployment)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ (OPTIONAL)](#faq)
 - [📝 License](#license)
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [your_project_name] <a name="about-project"></a>
+# 📖 CATALOGUEME <a name="about-project"></a>
 
-> Describe your project in 1 or 2 sentences.
+In this group project, we create a console app that helps to keep a record of different types of things. <br>
+Our things are books, music albums, movies, and games. <br> 
+They are inherint from the Item class. <br>
+The Item class has an association one to many with Genre, Author, Label, and Source. <br>
+Everything is based on a UML class diagram below. <br>
+In this project, all the data is stored in JSON files. <br>
+We will also prepare a database with tables structure analogical to the program's class structure. <br>
+For each method, we create a related unit test to it using Rspec.
 
-**[your_project__name]** is a...
+![catalog_of_my_things](https://user-images.githubusercontent.com/10439283/236437047-0f1ff120-20cd-4019-9828-24ab5f92e3b4.png)
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
-
-> Describe the tech stack and include only the relevant sections that apply to your project.
-
-<details>
-  <summary>Client</summary>
-  <ul>
-    <li><a href="https://reactjs.org/">React.js</a></li>
-  </ul>
-</details>
-
 <details>
   <summary>Server</summary>
   <ul>
-    <li><a href="https://expressjs.com/">Express.js</a></li>
+    <li><a href="https://www.ruby-lang.org/">Ruby</a></li>
   </ul>
 </details>
 
@@ -67,25 +58,34 @@
   </ul>
 </details>
 
+<details>
+<summary>Testing Framework</summary>
+  <ul>
+    <li><a href="https://rspec.info/">RSpec</a></li>
+  </ul>
+</details>
+
 <!-- Features -->
 
 ### Key Features <a name="key-features"></a>
 
-> Describe between 1-3 key features of the application.
-
-- **[key_feature_1]**
-- **[key_feature_2]**
-- **[key_feature_3]**
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LIVE DEMO -->
-
-## 🚀 Live Demo <a name="live-demo"></a>
-
-> Add a link to your deployed project.
-
-- [Live Demo Link](https://google.com)
+- **Book, Music Album, Movie, and Game inherit Item class**
+- **Ability to add a book**
+- **Ability to list all books**
+- **Ability to add a music album**
+- **Ability to list all music albums**
+- **Ability to add a game**
+- **Ability to list all games**
+- **Ability to set author to Item**
+- **Ability to set genre to Item**
+- **Ability to set label to Item**
+- **Ability to list all authors (e.g. 'Stephen King')**
+- **Ability to list all genres (e.g 'Comedy', 'Thriller')**
+- **Ability to list all labels (e.g. 'Gift', 'New')**
+- **Ability to write on JSON file**
+- **Ability to read from JSON file**
+- **Have a schema.sql to create database analogical to the program's structure**
+- **Have unit test for each method**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -93,83 +93,49 @@
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-> Describe how a new developer could make use of your project.
-
-To get a local copy up and running, follow these steps.
+To get a local copy up and running, follow these steps:
 
 ### Prerequisites
 
 In order to run this project you need:
 
-<!--
-Example command:
-
-```sh
- gem install rails
-```
- -->
+  - Terminal to run the _irb_ console
 
 ### Setup
 
 Clone this repository to your desired folder:
 
-<!--
 Example commands:
 
 ```sh
   cd my-folder
-  git clone git@github.com:myaccount/my-project.git
-```
---->
+  git clone git@github.com:Marcraphael12/Catalog-of-my-things.git
+  ```
 
 ### Install
 
 Install this project with:
 
-<!--
 Example command:
 
 ```sh
-  cd my-project
-  gem install
-```
---->
-
+  cd Catalog-of-my-things
+  bundle install
+  ```
+  
 ### Usage
 
-To run the project, execute the following command:
-
-<!--
-Example command:
+  Example command:
 
 ```sh
-  rails server
-```
---->
-
+  ruby main.rb
+  ```
 ### Run tests
-
-To run tests, run the following command:
-
-<!--
-Example command:
+  Example command:
 
 ```sh
-  bin/rails test test/models/article_test.rb
-```
---->
-
-### Deployment
-
-You can deploy this project using:
-
-<!--
-Example:
-
-```sh
-
-```
- -->
+  rspec spec
+  ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -177,19 +143,22 @@ Example:
 
 ## 👥 Authors <a name="authors"></a>
 
-> Mention all of the collaborators of this project.
+🦄 **Clarielle Larissa**
 
-👤 **Author1**
+- GitHub: [@rica213](https://github.com/rica213)
+- Twitter: [@alc3and](https://twitter.com/alc3and)
+- LinkedIn: [Larissa Clarielle](https://linkedin.com/in/larissa-clarielle)
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+😶‍🌫️ **Marc Raphael**
 
-👤 **Author2**
+- GitHub: [@Marcraphael12](https://github.com/Marcraphael12)
+- LinkedIn: [Marc Raphael](https://linkedin.com/in/marc-raphael12)
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+🤠 **Christian Hakizimana**
+
+- GitHub: [@hakichris](https://github.com/hakichris)
+- Twitter: [@hakichris2](https://twitter.com/hakichris2)
+- LinkedIn: [Christian Hakizimana](https://linkedin.com/in/hakichris)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -197,11 +166,10 @@ Example:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-> Describe 1 - 3 features you will add to the project.
-
-- [ ] **[new_feature_1]**
-- [ ] **[new_feature_2]**
-- [ ] **[new_feature_3]**
+- [ ] **[Add a movie]**
+- [ ] **[List all movies]**
+- [ ] **[Set sources to Item]**
+- [ ] **[List all sources (e.g. 'From a friend', 'Online shop')]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -219,9 +187,7 @@ Feel free to check the [issues page](../../issues/).
 
 ## ⭐️ Show your support <a name="support"></a>
 
-> Write a message to encourage readers to support your project
-
-If you like this project...
+If you like this project kindly give it a ⭐️ *STAR* ⭐️
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -229,25 +195,9 @@ If you like this project...
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-> Give credit to everyone who inspired your codebase.
-
-I would like to thank...
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- FAQ (optional) -->
-
-## ❓ FAQ (OPTIONAL) <a name="faq"></a>
-
-> Add at least 2 questions new developers would ask when they decide to use your project.
-
-- **[Question_1]**
-
-  - [Answer_1]
-
-- **[Question_2]**
-
-  - [Answer_2]
+We would like to thank: 
+  - Microverse
+  - Code Reviewers
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
