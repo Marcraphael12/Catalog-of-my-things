@@ -10,6 +10,7 @@ describe Genre do
     @rock = Genre.new('rock')
     @app = Startup.new
   end
+
   context 'Testing methods for updating genre' do
     it 'Should add genre to the music album and update the number of items to the Genre class' do
       @music_album_one.add_genre(@indie)
@@ -34,6 +35,25 @@ describe Genre do
       end.to output {
         "_____LIST OF GENRE_____\n\n0 - Indie\n1 - Rock\n"
       }.to_stdout
+    end
+
+    # Test the to_json method
+    it 'Should generate JSON with the correct attributes' do
+      expected_json = @indie.to_json
+      parsed_output = JSON.parse(expected_json)
+
+      expect(parsed_output['id']).to eq(@indie.instance_variable_get(:@id))
+      expect(parsed_output['name']).to eq('indie')
+    end
+
+    # Test the from_json method
+    it 'Should generate object from JSON' do
+      expected_json = @indie.to_json
+      parsed_output = JSON.parse(expected_json)
+      obj = Genre.from_json(expected_json)
+
+      expect(obj.instance_variable_get(:@id)).to eq(parsed_output['id'])
+      expect(obj.instance_variable_get(:@name)).to eq(parsed_output['name'])
     end
   end
 end

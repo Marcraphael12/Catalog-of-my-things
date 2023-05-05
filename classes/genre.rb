@@ -44,8 +44,7 @@ class Genre
   def to_json(*_args)
     JSON.generate({
                     id: @id,
-                    name: @name,
-                    items: @items
+                    name: @name
                   })
   end
 
