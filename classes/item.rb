@@ -3,12 +3,13 @@ require_relative './source'
 require_relative './author'
 require_relative './label'
 require 'date'
+require 'json'
 
 class Item
   attr_reader :id, :genre, :source, :author, :label
   attr_accessor :publish_date, :archived
 
-  def initialize(publish_date, archived: false)
+  def initialize(publish_date, archived)
     @id = Random.rand(1..1000)
     @publish_date = Date.parse(publish_date)
     @archived = archived
@@ -40,5 +41,26 @@ class Item
 
   def move_to_archive
     @archived = true if can_be_archived?
+  end
+
+  # Convert object to json
+  def to_json(*_args)
+    genre_id = (@genre.id if defined? @genre)
+    JSON.generate({
+                    id: @id,
+                    publish_date: @publish_date,
+                    archived: @archived,
+                    genre_id: genre_id
+                  })
+  end
+
+  # Convert json string to object
+  def self.from_json(string)
+    data = JSON.parse(string)
+    obj = new(data['publish_date'], archived: data['archived'])
+    obj.instance_variable_set(:@id, data['id'])
+    genre_id = data['genre_id']
+    obj.instance_variable_set(:@genre, Genre.find(genre_id))
+    obj
   end
 end
