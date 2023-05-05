@@ -6,18 +6,15 @@ require_relative './game_sub_classes/game_actions'
 class Startup
   # class initialization:
   # @game_actions: Object created from CameActions class
-  def initialize
-    @game_actions = GameActions.new
-  end
-
-  # the user options
   attr_reader :books
 
   def initialize
+    @game_actions = GameActions.new
     @books = []
     @labels = []
   end
 
+  # the user options
   def options_list
     puts "Please choose an option according to the numbers on the dashboard:
     1# List all books
