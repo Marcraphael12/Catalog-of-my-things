@@ -25,6 +25,12 @@ class Item
     source.items << self unless source.items.include?(self)
   end
 
+  ##
+  # This function adds the current item to the author's list of items if it is not already included.
+  # 
+  # Args:
+  #   author: The parameter "author" is a variable that represents an instance of the Author class. It
+  # is passed as an argument to the "add_author" method.
   def add_author(author)
     @author = author
     author.items << self unless author.items.include?(self)
@@ -35,6 +41,9 @@ class Item
     label.items << self unless label.items.include?(self)
   end
 
+##
+# This Ruby function checks if an item can be archived based on its publish date being more than 10
+# years ago.
   def can_be_archived?
     @publish_date.to_i < Date.today.year - 10
   end
