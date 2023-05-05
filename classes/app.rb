@@ -1,10 +1,17 @@
+require_relative './book'
+require_relative './label'
+require_relative './book_info'
 require_relative './game_sub_classes/game_actions'
 
 class Startup
   # class initialization:
   # @game_actions: Object created from CameActions class
+  attr_reader :books
+
   def initialize
     @game_actions = GameActions.new
+    @books = []
+    @labels = []
   end
 
   # the user options
@@ -28,7 +35,7 @@ class Startup
   # We save our selection into an array
   def selection(choice)
     methods = [
-      method(:booklist), method(:list_music_album), method(:gamelist), method(:list_genres), method(:list_labels),
+      method(:booklist), method(:list_music_album), method(:gamelist), method(:list_genres), method(:labellist),
       method(:list_authors), method(:create_book), method(:add_music_album), method(:create_game), method(:quit_app)
     ]
 
@@ -37,10 +44,73 @@ class Startup
   end
 
   # Our dashboade methods
-  # Defined with default options
+  # Defined with u7default options
   # TODO: To be implemented later
+
+  # list all the labels
+  def labellist
+    @labels.clear
+    book_data = BookData.new
+    book_data.load_label(@labels)
+    puts "\nLabel list(#{@labels.length}):"
+    puts '---------------'
+    return puts 'No labels added yet!' if @labels.empty?
+
+    @labels.each.with_index(1) do |label, index|
+      puts "#{index}. Title: #{label.title}, Color: #{label.color}"
+    end
+  end
+
+  # add book
+  def create_book
+    book_data = BookData.new
+    puts 'Create book'
+    puts '-----------------'
+    puts 'Add the publisher name'
+    publisher = gets.chomp
+    puts 'Add the state of the cover "bad or good"'
+    cover_state = gets.chomp.downcase
+    puts 'The date of publishing dd/mm/yy'
+    publish_date = gets.chomp
+    book = Book.new(publish_date, publisher, cover_state)
+    label = add_label
+    book.add_label(label)
+    @books << book
+    book_data.store_book(book)
+    @books.clear
+    @labels << label
+    book_data.store_label(label)
+    @labels.clear
+    puts 'Book added successfully'
+  end
+
+  # list all books
   def booklist
+    @books.clear
+    book_data = BookData.new
+    book_data.load_book(@books, @labels)
     puts 'book list in library'
+    puts "\nBook list(#{@books.length}):"
+    puts '--------------'
+    return puts 'No books added yet!' if @books.empty?
+
+    @books.each.with_index(1) do |book, index|
+      publisher = "Publisher: #{book.publisher}, " unless book.publisher.nil?
+      publish_date = "Publish date: #{book.publish_date}, " unless book.publish_date.nil?
+      cover_state = "Cover state: #{book.cover_state}" unless book.cover_state.nil?
+      puts "#{index}. #{publisher}#{publish_date}#{cover_state}"
+    end
+  end
+
+  def add_label
+    # add label
+    puts 'Assign a label to the book'
+    puts '-------------------------'
+    puts 'Give a title to the book'
+    title = gets.chomp
+    puts 'Assign a color to the book'
+    color = gets.chomp
+    Label.new(title, color)
   end
 
   # To be implemented
@@ -64,9 +134,6 @@ class Startup
   end
 
   # TODO: To be implemented later
-  def create_book
-    puts 'create book'
-  end
 
   # TODO: To be implemented later
   def create_music

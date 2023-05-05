@@ -1,0 +1,30 @@
+[
+  {
+    "id": 929,
+    "publish_date": "2023-02-12",
+    "publisher": "Publisher Chris",
+    "cover_state": "bad",
+    "label_id": 889
+  },
+  {
+    "id": 444,
+    "publish_date": "2023-05-12",
+    "publisher": "Publisher tyron",
+    "cover_state": "good",
+    "label_id": 605
+  },
+  {
+    "id": 618,
+    "publish_date": "2023-03-14",
+    "publisher": "Publisher Valerie",
+    "cover_state": "bad",
+    "label_id": 674
+  },
+  {
+    "id": 741,
+    "publish_date": "2023-09-25",
+    "publisher": "Publisher Claris",
+    "cover_state": "good",
+    "label_id": 909
+  }
+]

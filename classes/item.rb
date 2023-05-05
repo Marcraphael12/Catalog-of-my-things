@@ -5,8 +5,7 @@ require_relative './label'
 require 'date'
 
 class Item
-  attr_reader :id, :genre, :source, :author, :label
-  attr_accessor :publish_date, :archived
+  attr_accessor :publish_date, :archived, :id, :genre, :source, :author, :label
 
   # convert publish_date to a date format
   def initialize(publish_date = Time.new.strftime('%Y-%m-%d'), archived: false)
