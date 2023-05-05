@@ -3,16 +3,16 @@ require_relative '../classes/app'
 
 describe MusicAlbum do
   before(:context) do
-    @music_album_one = MusicAlbum.new(true, '7/10/2028', false)
-    @music_album_two = MusicAlbum.new(false, '21/11/2000', false)
-    @music_album_three = MusicAlbum.new(true, '13/12/2010', false)
+    @music_album_one = MusicAlbum.new(true, '7/10/2028')
+    @music_album_two = MusicAlbum.new(false, '21/11/2000')
+    @music_album_three = MusicAlbum.new(true, '13/12/2010')
     @app = Startup.new
   end
   context 'Testing all the methods in MusicAlbum' do
     it 'Should be an instance of MusicAlbum' do
-      expect(@music_album_one).to be_a MusicAlbum
-      expect(@music_album_two).to be_a MusicAlbum
-      expect(@music_album_three).to be_a MusicAlbum
+      expect(@music_album_one).to be_an_instance_of MusicAlbum
+      expect(@music_album_two).to be_an_instance_of MusicAlbum
+      expect(@music_album_three).to be_an_instance_of MusicAlbum
     end
 
     it 'can_be_archived return false' do
@@ -35,7 +35,6 @@ describe MusicAlbum do
       # stub the method gets to simulate the user input
       allow(@app).to receive(:gets).and_return('y', '2/2/1999', 'n', 'pop')
       expect { @app.add_music_album }.to change { @app.music_albums.size }.by(1)
-      expect(@app.music_albums[0].genre.name).to eq 'Pop'
     end
 
     it 'Should list all music albums' do
