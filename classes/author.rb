@@ -1,6 +1,6 @@
 require_relative './item'
 
-class Author < Item
+class Author
   # Make class properties accessible
   attr_reader :id
   attr_accessor :first_name, :last_name, :items
@@ -10,8 +10,6 @@ class Author < Item
   # first_name: string
   # last_name: string
   def initialize(first_name, last_name)
-    # call the parent calss constructor
-    super
     @id = Random.rand(1..2000)
     @first_name = first_name
     @last_name = last_name
