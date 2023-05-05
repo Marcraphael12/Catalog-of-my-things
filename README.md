@@ -152,7 +152,8 @@ Example command:
 😶‍🌫️ **Marc Raphael**
 
 - GitHub: [@Marcraphael12](https://github.com/Marcraphael12)
-- LinkedIn: [Marc Raphael](https://linkedin.com/in/marc-raphael12)
+- Twitter: [@Marcraphael20](https://twitter.com/MarcRaphael20)
+- LinkedIn: [Marc raphael](http://www.linkedin.com/in/marc-raphael-326039204)
 
 🤠 **Christian Hakizimana**
 
