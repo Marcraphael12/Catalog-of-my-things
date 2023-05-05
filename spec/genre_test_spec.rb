@@ -3,9 +3,9 @@ require_relative '../classes/app'
 
 describe Genre do
   before(:context) do
-    @music_album_one = MusicAlbum.new(true, '7/10/2028')
-    @music_album_two = MusicAlbum.new(false, '21/11/2000')
-    @music_album_three = MusicAlbum.new(true, '13/12/2010')
+    @music_album_one = MusicAlbum.new(true, '2028-7-10')
+    @music_album_two = MusicAlbum.new(false, '2000-11-11')
+    @music_album_three = MusicAlbum.new(true, '2010-12-13')
     @indie = Genre.new('indie')
     @rock = Genre.new('rock')
     @app = Startup.new

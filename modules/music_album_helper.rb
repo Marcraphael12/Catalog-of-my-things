@@ -29,7 +29,7 @@ module MusicAlbumHelper
   end
 
   def ask_publish_date
-    print 'What is the date of publication? (DD/MM/YYYY) '
+    print 'What is the date of publication? (YYYY-MM-DD-) '
     gets.chomp
   end
 
