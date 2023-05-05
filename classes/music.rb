@@ -5,8 +5,11 @@ class MusicAlbum < Item
   attr_accessor :on_spotify, :publish_date
   attr_reader :id, :archived
 
-  def initialize(on_spotify, publish_date, _archived)
-    super(publish_date, archived: false)
+  # @param {Boolean} on_spotify
+  # @param {String} publish_date
+  # @param {Boolean} archived
+  def initialize(on_spotify, publish_date, archived: false)
+    super(publish_date, archived)
     @on_spotify = on_spotify
   end
 
@@ -30,8 +33,10 @@ class MusicAlbum < Item
 
   # @override
   # deserialization : json to object
+  # @param {String}
+  # @return {MusicAlbum}
   def self.from_json(string)
     data = JSON.parse(string)
-    new(data['on_spotify'], data['publish_date'], data['archived'])
+    new(data['on_spotify'], data['publish_date'], archived: data['archived'])
   end
 end
