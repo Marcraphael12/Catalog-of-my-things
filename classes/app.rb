@@ -40,6 +40,8 @@ class Startup
   # Our dashboade methods
   # Defined with u7default options
   # TODO: To be implemented later
+
+  # list all the labels 
   def labellist
     @labels.clear
     book_data = BookData.new
@@ -53,8 +55,8 @@ class Startup
     end
   end
 
+  # add book
   def create_book
-    # add book
     book_data = BookData.new
     puts 'create book'
     puts 'add the publisher name'
@@ -75,6 +77,7 @@ class Startup
     puts 'Book added successfully'
   end
 
+# list all books 
   def booklist
     @books.clear
     book_data = BookData.new
