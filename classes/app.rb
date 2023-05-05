@@ -41,7 +41,7 @@ class Startup
   # Defined with u7default options
   # TODO: To be implemented later
 
-  # list all the labels 
+  # list all the labels
   def labellist
     @labels.clear
     book_data = BookData.new
@@ -78,7 +78,7 @@ class Startup
     puts 'Book added successfully'
   end
 
-# list all books 
+  # list all books
   def booklist
     @books.clear
     book_data = BookData.new
@@ -118,8 +118,6 @@ class Startup
   end
 
   # TODO: To be implemented later
-  
-
 
   # TODO: To be implemented later
   def create_music
