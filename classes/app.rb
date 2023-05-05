@@ -12,7 +12,7 @@ class Startup
   end
 
   def options_list
-    puts 'Please choose an option according to the numbers on the dashboard:
+    puts "\nPlease choose an option according to the numbers on the dashboard:
     1# List all books
     2# List all labels
     3# List all music albums
@@ -20,7 +20,7 @@ class Startup
     5# Add a book
     6# Add a music
     7# Add a game
-    8# Exit'
+    8# Exit"
 
     choice = gets.chomp
     selection(choice.to_i)
