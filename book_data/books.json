@@ -33,5 +33,26 @@
     "publisher": "Publisher Larissa",
     "cover_state": "bad",
     "label_id": 587
+  },
+  {
+    "id": 817,
+    "publish_date": "2023-05-05",
+    "publisher": "Publisher Chris",
+    "cover_state": "good ",
+    "label_id": 394
+  },
+  {
+    "id": 147,
+    "publish_date": "2023-05-05",
+    "publisher": "Publisher ",
+    "cover_state": "bad",
+    "label_id": 570
+  },
+  {
+    "id": 564,
+    "publish_date": "2023-05-05",
+    "publisher": "Publisher chria",
+    "cover_state": "bad ",
+    "label_id": 1145
   }
 ]
