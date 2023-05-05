@@ -52,11 +52,14 @@ CREATE TABLE books(
   publish_date DATE,
   publisher VARCHAR(50),
   cover_state VARCHAR(50),
-  Item_id INTEGER REFERENCES item(id),
+  Item_id INTEGER REFERENCES item(id)
 ) 
 
 CREATE TABLE labels(
   id SERIAL  primary key 
   title varchar(50),
-  color varchar(50)
+  color varchar(50),
+  
+  -- a reference to the item table
+  foreign key(id) references item(id)
 ) 
