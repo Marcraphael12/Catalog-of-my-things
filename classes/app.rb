@@ -1,22 +1,37 @@
+require_relative './music'
+require_relative './genre'
+require_relative '../modules/io'
+require_relative '../modules/music_album_helper'
 require_relative './book'
 require_relative './label'
 require_relative './book_info'
 require_relative './game_sub_classes/game_actions'
 
 class Startup
+  include MusicAlbumHelper
+  include IOHelper
   # class initialization:
   # @game_actions: Object created from CameActions class
+  attr_accessor :music_albums, :genres
   attr_reader :books
 
   def initialize
+    @music_albums = read_file('./data/music_album.json', 'MusicAlbum')
+    @genres = read_file('./data/genres.json', 'Genre')
     @game_actions = GameActions.new
     @books = []
     @labels = []
   end
 
+  # Title of each option when executed
+  def title(title)
+    puts "_____#{title.upcase}_____"
+    puts ''
+  end
+
   # the user options
   def options_list
-    puts "Please choose an option according to the numbers on the dashboard:
+    puts "\nPlease choose an option according to the numbers on the dashboard:
     1# List all books
     2# List all music albums
     3# List of games
@@ -43,9 +58,8 @@ class Startup
     (1..10).include?(choice) && methods[choice - 1].call
   end
 
-  # Our dashboade methods
-  # Defined with u7default options
-  # TODO: To be implemented later
+  # Our dashboard methods
+  # Defined with default options
 
   # list all the labels
   def labellist
@@ -113,31 +127,41 @@ class Startup
     Label.new(title, color)
   end
 
-  # To be implemented
-  def list_labels
-    puts 'label list'
-  end
-
-  # To be implemented
-  def list_genres
-    puts 'label list'
-  end
-
-  # TODO: To be implemented later
+  # List all the existing music albums
   def list_music_album
-    puts 'Music list in library'
+    @music_albums = read_file('./data/music_album.json', 'MusicAlbum')
+    title('list of music album')
+    if @music_albums.empty?
+      puts 'No music album in the library'
+      nil
+    else
+      @music_albums.each_with_index do |music_album, index|
+        puts "#{index}- Music id: #{music_album.id} - is published on #{music_album.publish_date}"
+      end
+    end
   end
 
-  # TODO: To be implemented later
+  # List all the existing genres
+  def list_genres
+    @genres = read_file('./data/genres.json', 'Genre')
+    title('list of genre')
+    @genres.each_with_index { |genre, index| puts "#{index} - #{genre.name}" }
+  end
+
   def add_music_album
-    puts 'Music list in library'
-  end
-
-  # TODO: To be implemented later
-
-  # TODO: To be implemented later
-  def create_music
-    puts 'create music'
+    title('add a music album')
+    # Handle user input
+    on_spotify = ask_on_spotify
+    publish_date = ask_publish_date
+    archived = ask_archived
+    genre = ask_genre
+    # Create a new music album
+    new_music_album = MusicAlbum.new(on_spotify, publish_date, archived: archived)
+    # Set genre only when the user provided a genre
+    add_genre_to_music_album(@genres, new_music_album, genre) unless genre.empty?
+    @music_albums << new_music_album
+    write_file(@music_albums, './data/music_album.json')
+    puts 'A music album is created successfully'
   end
 
   # call create_game method from GameActions
