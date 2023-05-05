@@ -58,12 +58,13 @@ class Startup
   # add book
   def create_book
     book_data = BookData.new
-    puts 'create book'
-    puts 'add the publisher name'
+    puts 'Create book'
+    puts '-----------------'
+    puts 'Add the publisher name'
     publisher = gets.chomp
-    puts 'add the state of the cover "bad or good"'
+    puts 'Add the state of the cover "bad or good"'
     cover_state = gets.chomp.downcase
-    puts 'the date of publishing dd/mm/yy'
+    puts 'The date of publishing dd/mm/yy'
     publish_date = gets.chomp
     book = Book.new(publish_date, publisher, cover_state)
     label = add_label
@@ -95,6 +96,17 @@ class Startup
     end
   end
 
+  def add_label
+    # add label
+    puts 'Assign a label to the book'
+    puts '-------------------------'
+    puts 'Give a title to the book'
+    title = gets.chomp
+    puts 'Assign a color to the book'
+    color = gets.chomp
+    Label.new(title, color)
+  end
+
   # TODO: To be implemented later
   def musiclist
     puts 'Music list in library'
@@ -107,15 +119,7 @@ class Startup
 
   # TODO: To be implemented later
   
-  def add_label
-    # add label
-    puts 'assign a label to the book'
-    puts 'give a title to the book'
-    title = gets.chomp
-    puts 'assign a color to the book'
-    color = gets.chomp
-    Label.new(title, color)
-  end
+
 
   # TODO: To be implemented later
   def create_music
