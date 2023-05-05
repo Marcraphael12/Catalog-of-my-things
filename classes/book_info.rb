@@ -2,6 +2,8 @@ require_relative './book'
 require 'json'
 
 class BookData
+
+  # store the book into json file 
   def store_book(books)
     books_json = {
       id: books.id,
@@ -20,6 +22,7 @@ class BookData
     end
   end
 
+  # load the book data from JSON to book arr 
   def load_book(book_arr, _label_arr)
     file_path = './book_data/books.json'
     return unless File.exist?(file_path) && !File.empty?(file_path)
@@ -31,6 +34,7 @@ class BookData
     end
   end
 
+  # store label data from array to Json file 
   def store_label(labels)
     label_json = {
       id: labels.id,
@@ -47,6 +51,8 @@ class BookData
       File.write(file_path, JSON.pretty_generate([label_json]))
     end
   end
+
+# load the label json data back to label array 
 
   def load_label(label_arr)
     file_path = './book_data/labels.json'
