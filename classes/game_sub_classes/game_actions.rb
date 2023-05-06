@@ -50,7 +50,9 @@ class GameActions
     # otherwise create it
     if File.exist?(file)
       JSON.parse(File.read(file)).each do |game|
-        data.push(Game.new(game['multiplayer'], game['last_played_at'], game['publish_date']))
+        obj = Game.new(game['multiplayer'], game['last_played_at'], game['publish_date'])
+        obj.instance_variable_set(:@id, game['id'])
+        data.push(obj)
       end
     else
       File.write(file, JSON.generate(data))
@@ -66,7 +68,9 @@ class GameActions
     # otherwise create it
     if File.exist?(file)
       JSON.parse(File.read(file)).each do |author|
-        data.push(Author.new(author['first_name'], author['last_name']))
+        obj = Author.new(author['first_name'], author['last_name'])
+        obj.instance_variable_set(:@id, author['id'])
+        data.push(obj)
       end
     else
       File.write(file, JSON.generate(data))

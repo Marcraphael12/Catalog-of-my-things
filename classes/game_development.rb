@@ -8,7 +8,7 @@ class Game < Item
   # Parameters:
   # multiplayer: boolean
   # last_played_at: date
-  # publish_date: boolean
+  # publish_date: date
   def initialize(multiplayer, publish_date, last_played_at = Time.new.strftime('%Y-%m-%d'))
     # Calls the parent class constructor
     super publish_date
