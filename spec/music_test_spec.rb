@@ -46,7 +46,7 @@ describe MusicAlbum do
       }.to_stdout
     end
 
-    # Test to_json 
+    # Test to_json
     it 'Should return a json object' do
       expected_json = @music_album_one.to_json
       parsed_output = JSON.parse(expected_json)
