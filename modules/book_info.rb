@@ -1,7 +1,7 @@
-require_relative './book'
+require_relative '../classes/book'
 require 'json'
 
-class BookData
+module Bookdata
   # store the book into json file
   def store_book(books)
     books_json = {
