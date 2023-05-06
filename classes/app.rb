@@ -27,7 +27,7 @@ class Startup
   # Title of each option when executed
   def title(title)
     puts "_____#{title.upcase}_____"
-    puts ''
+    title
   end
 
   # the user options
