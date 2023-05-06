@@ -4,12 +4,13 @@ require_relative '../modules/io'
 require_relative '../modules/music_album_helper'
 require_relative './book'
 require_relative './label'
-require_relative './book_info'
+require_relative '../modules/book_info'
 require_relative './game_sub_classes/game_actions'
 
 class Startup
   include MusicAlbumHelper
   include IOHelper
+  include Bookdata
   # class initialization:
   # @game_actions: Object created from CameActions class
   attr_accessor :music_albums, :genres
@@ -64,8 +65,8 @@ class Startup
   # list all the labels
   def labellist
     @labels.clear
-    book_data = BookData.new
-    book_data.load_label(@labels)
+    # book_data = BookData.new
+    load_label(@labels)
     puts "\nLabel list(#{@labels.length}):"
     puts '---------------'
     return puts 'No labels added yet!' if @labels.empty?
@@ -77,7 +78,7 @@ class Startup
 
   # add book
   def create_book
-    book_data = BookData.new
+    # book_data = BookData.new
     puts 'Create book'
     puts '-----------------'
     puts 'Add the publisher name'
@@ -90,10 +91,10 @@ class Startup
     label = add_label
     book.add_label(label)
     @books << book
-    book_data.store_book(book)
+    store_book(book)
     @books.clear
     @labels << label
-    book_data.store_label(label)
+    store_label(label)
     @labels.clear
     puts 'Book added successfully'
   end
@@ -101,8 +102,8 @@ class Startup
   # list all books
   def booklist
     @books.clear
-    book_data = BookData.new
-    book_data.load_book(@books, @labels)
+    # book_data = BookData.new
+    load_book(@books, @labels)
     puts 'book list in library'
     puts "\nBook list(#{@books.length}):"
     puts '--------------'
