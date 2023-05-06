@@ -1,0 +1,51 @@
+[
+  {
+    "id": 6,
+    "publish_date": "2023-05-06",
+    "publisher": "publisher john",
+    "cover_state": "bad",
+    "label_id": 1686
+  },
+  {
+    "id": 979,
+    "publish_date": "2023-05-06",
+    "publisher": "Publisher A",
+    "cover_state": "good",
+    "label_id": 30
+  },
+  {
+    "id": 568,
+    "publish_date": "2023-05-06",
+    "publisher": "publisher b",
+    "cover_state": "good",
+    "label_id": 852
+  },
+  {
+    "id": 552,
+    "publish_date": "2023-05-06",
+    "publisher": "publisher b",
+    "cover_state": "good",
+    "label_id": 1534
+  },
+  {
+    "id": 566,
+    "publish_date": "2023-05-06",
+    "publisher": "publisher b",
+    "cover_state": "good",
+    "label_id": 1930
+  },
+  {
+    "id": 84,
+    "publish_date": "2023-05-06",
+    "publisher": "publisher b",
+    "cover_state": "good",
+    "label_id": 1239
+  },
+  {
+    "id": 756,
+    "publish_date": "2023-05-06",
+    "publisher": "publisher b",
+    "cover_state": "good",
+    "label_id": 814
+  }
+]
