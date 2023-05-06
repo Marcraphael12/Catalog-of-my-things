@@ -14,6 +14,7 @@ describe Startup do
     it 'should return title' do
       expect(@startup.title('book')).to eq('book')
     end
+
     it 'Should add a music album' do
       # stub the puts method to prevent it from printing output on the console during testing
       allow(@startup).to receive(:puts)
@@ -29,6 +30,12 @@ describe Startup do
       end.to output {
         "_____LIST OF MUSIC ALBUM_____\n\n0- Music id: #{@music_album_one.id} - is published on 2028-10-07\n"
       }.to_stdout
+    end
+
+    it 'should increase the size of the book' do
+      allow(@startup).to receive(:puts)
+      allow(@startup).to receive(:gets).and_return('publisher b', 'good', '12/2/2023', 'love', 'green')
+      expect { @startup.create_book }.to change { @startup.books.size }.by(1)
     end
   end
 end

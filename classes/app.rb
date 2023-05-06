@@ -92,10 +92,8 @@ class Startup
     book.add_label(label)
     @books << book
     store_book(book)
-    @books.clear
     @labels << label
     store_label(label)
-    @labels.clear
     puts 'Book added successfully'
   end
 
