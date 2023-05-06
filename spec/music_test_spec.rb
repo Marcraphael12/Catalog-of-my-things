@@ -45,5 +45,27 @@ describe MusicAlbum do
         "_____LIST OF MUSIC ALBUM_____\n\n0- Music id: #{@music_album_one.id} - is published on 2028-10-07\n"
       }.to_stdout
     end
+
+    # Test to_json
+    it 'Should return a json object' do
+      expected_json = @music_album_one.to_json
+      parsed_output = JSON.parse(expected_json)
+
+      expect(parsed_output['id']).to eq(@music_album_one.instance_variable_get(:@id))
+      expect(parsed_output['publish_date']).to eq('2028-7-10')
+      expect(parsed_output['archived']).to eq(false)
+      expect(parsed_output['genre_id']).to eq nil
+    end
+
+    # Test from_json
+    it 'Should return an object from json' do
+      expected_json = @music_album_one.to_json
+      parsed_output = JSON.parse(expected_json)
+      obj = MusicAlbum.from_json(expected_json)
+
+      expect(obj.instance_variable_get(:@publish_date)).to eq(parsed_output['publish_date'])
+      expect(obj.instance_variable_get(:@archived)).to eq(parsed_output['archived'])
+      expect(obj.instance_variable_get(:@genre)).to eq(nil)
+    end
   end
 end
